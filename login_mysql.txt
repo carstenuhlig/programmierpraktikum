@@ -1,0 +1,8 @@
+Host:
+mysql2-ext
+DB-Name:
+bioprakt6
+User:
+bioprakt6
+PW:
+JzJyggflWG

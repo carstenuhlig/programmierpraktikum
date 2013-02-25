@@ -1,0 +1,1 @@
+SELECT sequences.identifier FROM sequences, keywords WHERE sequences.id == keywords.fromseq AND keywords.keyword == input

@@ -1,0 +1,9 @@
+tar xvfz ncbi-blast-package.tar.gz
+# datei in ordner schieben
+# mycoplasma genitalium runterladen
+# in ordner bin von entpacktem blastp ordner
+makeblastdb -in ~/Downloads/NC_000908.faa -out ~/Downloads/database_from_Mycoplasma_genitalium -title mycoplasma_genitalium -dbtype prot
+# nach passender protein sequenz eines menschen suchen
+# und in datei speichern faa oder ähnlichem
+blastp -db ~/Downloads/database_from_Mycoplasma_genitalium -query ~/Downloads/human_mitochrondrial_atpsynthase.faa -html -out ~/Downloads/index_mycoplasma_genitalium_homo_sapiens_query.html
+# dateien in assignment14 ordner packen und fertig
