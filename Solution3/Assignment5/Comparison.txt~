@@ -1,7 +1,0 @@
-Data: All sequences from U00096.fn
-pattern					time mysql (s)	time perl (s)
-[ACCA](8)-G-[GA](2)-x(3)-A-T-C'		0.546		0.274
-A-T-G-x(3,6)-C-[AT](3)-C-G-C		0.856		0.289
-x(15)					0.004		0,311
-C-G-C-x(3)-T				0.016		0,304	
-T-G-C-[AT](2)-[ATG](2,4)		0,075		0,320
