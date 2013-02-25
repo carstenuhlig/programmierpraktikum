@@ -1,0 +1,4 @@
+data <- read.csv("histo.txt", sep = "\t")
+png("histogram.png")
+barplot(data[,2], names.arg = data[,1], main = "histogram")
+dev.off();

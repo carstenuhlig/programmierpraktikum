@@ -1,0 +1,125 @@
+1.
+
+http://au.expasy.org/
+
+
+
+2. Jeder Entry hat mehrere Zeilen, dabei steht vor jeder Zeile ein zwei Zeichen Code, der angibt, was für eine Angabe folgt. Mögliche Informationstypen sind: 
+    ID     - Identification.
+    AC     - Accession number(s).
+    DT     - Date.
+    DE     - Description.
+    GN     - Gene name(s).
+    OS     - Organism species.
+    OG     - Organelle.
+    OC     - Organism classification.
+    RN     - Reference number.
+    RP     - Reference position.
+    RC     - Reference comments.
+    RX     - Reference cross-references.
+    RA     - Reference authors.
+    RL     - Reference location.
+    CC     - Comments or notes.
+    DR     - Database cross-references.
+    KW     - Keywords.
+    FT     - Feature table data.
+    SQ     - Sequence header.
+           - (blanks) sequence data.
+    //     - Termination line.
+    
+    Quelle: http://athina.biol.uoa.gr/FT/format_SwissProt.html
+
+3.
+
+Uniprot
+539165 reviewed Entries
+30,309,136 Entries
+
+Genbank
+162886727 Sequences
+150141354858 Bases
+
+EMBL
+279,6 Million sequences
+542,2 billion bases
+
+PDB
+88170 entries
+
+4.
+
+Swissprot
+26,100 for Homo Sapiens
+490 for Mycoplasma Genitalium
+
+Trembl
+744,035 for Homo Sapiens
+2,280 for Mycoplasma Genitalium
+
+5.
+
+Für die FASTA-Datei siehe Fastasequence.fasta
+
+6. Über die URL http://www.uniprot.org/uniprot/${acNum}.fasta
+Dabei ist acNum die AC-Nummer des gesuchten Proteins
+
+
+7. Das Pattern ist vier mal in Escherichia coli K12/DH108 enthalten: 
+	1. Integration host factor subunit alpha (IHFA_ECODH)
+	2. Integration host factor subunit beta (IHFB_ECODH)
+	3. HU, DNA-binding transcriptional regulator alpha (B1XF03_ECODH)
+	4. HU, DNA-binding transcriptional regulator beta (B1XC03_ECODH)
+
+PSOOO45 beschreibt ein histon-ähnliches Protein, bei dem die Funktion noch nicht genau bekannt ist. Es kann allerdings DNA binden und verhindern, dass diese unter extremen Bedingungen denaturiert. 
+
+8. Die Blast Suche wurde auf "Integration host factor subunit alpha" durchgeführt. Das Ergebnis ist das "Integration host factor subunit alpha" Protein in 26 verschiedene Bakterienstämmen, davon 19 Escherichia coli Stämme. Der E-Value beträgt in allen Fällen 7.0*10^-65. Er beschreibt die Wahrscheinlichkeit, dass die gefundene Übereinstimmung rein zufällig vorliegt. Ein niedriger E-value spricht also für die Richtigkeit des Ergebnis.
+
+9. EBI	
+	Virus: 		3176
+	Archaea: 	146
+	Bacteria: 	2204
+	Eukaryota: 	166
+   NCBI
+   	Virus:		1824
+	Archaea:	286	
+	Bacteria:	4062
+	Eukaryota:	1986
+
+10
+
+Anzahl der Basenpaare im menschlichen Genom: ca. 3 Milliarden
+längste Chromosom: Chromosom 1
+Anzahl der bp im Chromsom 1: ca. 249 Millionen
+Gene auf Chromosom 1 lokalisiert: 4098
+
+11
+
+Anzahl der Gene auf Chromosom 22: 896
+Anzahl der Contigs auf Chromosom 22: 613 http://www.pnas.org/content/93/13/6297.abstract 
+Chromosom 9 hat die meisten Contigs (24 Stück)
+Chromosom 14 hat die wenigsten Contigs (1 Stück)
+
+13
+
+X-Ray, Proteins: 72486 results
+X-Ray, Nucleic Acids: 1434 results
+X-Ray, Protein NA Complex: 3716 results
+
+NMR, Proteins: 8587 results
+NMR, Nucleic Acids: 1018 results
+NMR, Protein NA Complex: 192 results
+
+Aufgabe 14:
+	Die Suche per BLAST Suche hat 2 verschiedene Organismen gefunden: Bacillus anthracis und Bacillus cereus. Dabei wurden 17305009 Sequenzen durchsucht.
+	Jedoch hat nur Bacillus anthracis eine tödliche Wirkung auf viele Organismen, da B. anthracis durch Zelltod, der durch Hemmung von verschiedenen Vorgängen im 	Stoffwechsel hervorgerufen wird. Diese Erkenntnis wurde durch NCBI PubMed erlangt.
+
+16. 	Im Terminal in den Home Ordner der Gruppe begeben
+	svnadmin create var/svn
+	Bearbeite var/svn/conf/svnserve.conf
+	Bearbeite var/svn/conf/passwd
+	erstelle svn Ordner im eigenen Verzeichnis
+	svn checkout --username schmidtju --password s file:///home/proj/biocluster/praktikum/bioprakt/progprakt6/var/svn
+
+18.
+In "work_load_check.sh"
+

@@ -1,0 +1,23 @@
+Fold der Proteine gemäß SCOP und CATH:
+
+1MBN:	Globin-like --> Tertiärstruktur + 8 alpha-Helizes.
+1BAF:	Immunoglobulin-like beta-sandwich --> aligned beta sheets + sehr wenige Helizes.
+1TIM:	beta-/alpha-barrel --> doppelte "doughnut"-Form, wo die Helizes außen und die paralellen beta-Strands innen sind.
+256B:	Four-helical up-and-down bundle --> "doppelte Form" mit 4 langen Helizes, die sich sehr nahe stehen und an dem einen Ende fast "geschlossen" sind. Die 2 einzelnen 		Formen stehen nicht parallel zueinander, eher perpendikulär.
+
+Mit dem Befehl "show information" in der Kommandozeile von RasMol kann man sich die Anzahl der Helizes und der Strands anzeigen lassen. Das kann man auch mit dem Kommando "structure" machen. Ferner kann man mit "select helix" die Anzahl der Atome in allen Helizes sehen. Mit "select amino" kann man sich die Anzahl der Aminosäuren in den Sekundärstrukturelementen anzeigen lassen. Der Befehl "select all" zeigt die Anzahl aller Atome in dem gezeigten Protein. Anhand dieser Daten kann man sich den prozentualen Anteil von Aminosäuren in den Sekundärstrukturelementen berechnen: die Zahl, die man durch "select amino" bekommt, geteilt durch die Zahl, die man durch "select all" bekommt, das Ganze multipliziert durch 100. Beispiel an 1BAF:
+select amino --> 4054
+select all --> 4082
+(4054/4082)*100 = 99,3%
+
+Den obigen Daten entsprechend, bekommt man folgende Tabelle:
+
+Protein	Helizes	Strands	%Aminosäuren
+1MBN	8	0	96,5%
+1BAF	5	40	99,3%
+1TIM	25	16	100%
+256B	12	0	85,9%
+
+Den Abstand zwischen den alpha- bzw. den beta-Atomen des ersten und des letzten Restes sieht man in der Graphik, wenn man die perl-Datei ausführt uns sich RasMol öffnet.
+
+Bzgl. Boxvolumen siehe Kommentare in der jeweiligen perl-Datei zu jedem Protein. Min- und max-Werte wurden mit dem Programm koordinaten.pl berechnet.

@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w
+use strict;
+use List::Util qw( min max );
+use LWP::Simple;
+
+#open file and read x, y and z value from the lines starting with "ATOM"
+my $file = get("http://www.rcsb.org/pdb/files/$ARGV[0].pdb");
+my @lines = split(/\n/, $file);
+my @x = ();
+my @y = ();
+my @z = ();
+foreach my $line (@lines){		
+  if($line =~ m/^ATOM\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)\s+(\S+)\s+(\S+)/){
+    my $null = "";
+    push(@x, $1);
+    push(@y, $2);
+    push(@z, $3);
+  }
+}
+
+#calculate and print minima and maxima
+print "\tmin\tmax\n";
+print "x\t".min(@x)."\t".max(@x)."\n";
+print "y\t".min(@y)."\t".max(@y)."\n";
+print "z\t".min(@z)."\t".max(@z)."\n";
+
