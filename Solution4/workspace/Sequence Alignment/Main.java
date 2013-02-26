@@ -42,33 +42,20 @@ public class Main {
 		if (nw) {
 			AlignmentAlgorithm alg = new NWSW();
 			double[] g = { -4 };
-			String[] i = { "ARNDCQEGHILKMFPSTWYV", "ARNDCQEGHILKMFPSTWYV" };
-			Sequence s1 = new Sequence("SRMPSPPMPVPPAALFNR"), s2 = new Sequence("ARNDCQEGHILKMFPSTWYV");
-			alg.init(s1, s2, 'f', g,
+			Sequence[] seqs = Utilities.getSequences("/home/sch/schmidtju/domains.seqlib");
+			alg.init(seqs[0], seqs[1], 'l', g,
 					new ScoreSystem(Utilities.readMatrix(m), Utilities.getIndices(m)));
 			alg.initMatrix();
 			alg.calc();
-			String[] result = alg.traceback();
-			for (int i1 = 0; i1 < result.length; i1++)
-				System.out.println(result[i1]);
-			double[][] matrix = alg.getA();
-			System.out.print("\t");
-			for (int j = 1; j < matrix[0].length; j++){
-				System.out.print("\t"+s2.at(j - 1));
+			String[] result = alg.traceback();		
+			System.out.println(result[0]);
+			System.out.println(result[1]);
 			}
-			System.out.println();
-			for (int i1 = 0; i1 < matrix.length; i1++){
-				if(i1 > 0)
-					System.out.print(s1.at(i1-1)+"\t");
-				else
-					System.out.print("\t");
-				for (int j = 0; j < matrix[0].length; j++){
-					System.out.print(matrix[i1][j]+"\t");
-				}
-				System.out.println();
-			}
-			
-
+		
+		String[][] pair = Utilities.getPairs("/home/sch/schmidtju/sanity.pairs");
+		for(int i = 0; i < pair.length; i++){
+			System.out.println(pair[i][0] + "\t" + pair[i][1]);
 		}
+//		Utilities.printSequences(Utilities.getSequences("/home/sch/schmidtju/domains.seqlib"));
 	}
 }

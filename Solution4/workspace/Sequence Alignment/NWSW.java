@@ -168,7 +168,6 @@ public class NWSW extends AlignmentAlgorithm {
 		return align;
 	}
 	
-
 	public double[][] getA() {
 		return A;
 	}
