@@ -1,0 +1,9 @@
+Dynamic programming is a method for solving complex problems by breaking them down into simpler subproblems. This method takes far less time than other methods, as recursion. With DP, to solve a problem, one has to solve diffetent parts of the problem (the subproblems) and this way the number of computations is reduced. Once a solution is solved, the answer is memorized and the next time this answer is needed, it can be just looked up. Therefore, there is less memory used for this method and the time required for all the calculations is much less than the time for a recursion method. DP is especially useful, when the volume of the input data is big.
+
+Using recursion may be helpful for avoiding unnecessary calling of functions, but with too many recursive functions, there may be confusion in the code. A recursive solution is very logical and might be difficult to trace if there are many recursive functions. Especially when debug needed. Recursives require also a lot of free memory, because each recursive function is stored in the process control block and this one is pushed in the stack space unless the recursive function is a tail call. 
+
+The time complexity for a DP-method is O(n^2) - a quadratic function - and the complexity for a recursion method is O(3^n) - an exponential function.
+
+Amount of computations required: advantage for Dynamic Programming
+Amount of memory used by each implementation: disadvantage for Recursion implementation.
+

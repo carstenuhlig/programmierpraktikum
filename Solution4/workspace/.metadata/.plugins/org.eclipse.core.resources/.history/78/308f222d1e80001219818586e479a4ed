@@ -1,0 +1,9 @@
+
+public abstract class AlignmentAlgorithm {
+	
+	public abstract void init(Sequence s1, Sequence s2, char type, Double[] gap, ScoreSystem sc);
+	public abstract void initMatrix();
+	public abstract double calc();
+	public abstract String[] traceback();
+	
+}

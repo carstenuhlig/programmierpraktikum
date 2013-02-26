@@ -1,0 +1,100 @@
+public class NWSW extends AlignmentAlgorithm {
+
+	double[][] A;
+	Sequence seq1;
+	Sequence seq2;
+	char type;
+	double gap;
+	ScoreSystem scoSys;
+
+	public void init(Sequence s1, Sequence s2, char t, double[] g,
+			ScoreSystem sc) {
+		seq1 = s1;
+		seq2 = s2;
+		type = t;
+		gap = g[0];
+		scoSys = sc;
+
+	}
+
+	public void initMatrix() {
+		A = new double[seq1.length() + 1][seq2.length() + 1];
+		if (type == 'g') {
+			A[0][0] = 0;
+			for(int i = 1; i <= seq1.length(); i++){
+				A[i][0] = A[i-1][0] + gap;
+			}
+			for(int j = 1; j <= seq2.length(); j++){
+				A[0][j] = A[0][j-1] + gap;
+			}
+		}
+		else if (type == 'l' || type == 'f') {
+			for(int i = 0; i <= seq1.length(); i++){
+				A[i][0] = 0;
+			}
+			for(int j = 1; j <= seq2.length(); j++){
+				A[0][j] = 0;
+			}
+		}
+
+	}
+
+	public double calc() {
+		if (type == 'g' || type == 'f') {
+			for (int i = 1; i <= seq1.length(); i++) {
+				for (int j = 1; j <= seq2.length(); j++) {
+					double scoreD = A[i - 1][j - 1] + scoSys.score(seq1, i, seq2, j);
+					double scoreL = A[i][j - 1] + gap;
+					double scoreU = A[i - 1][j] + gap;
+					A[i][j] = Math.max(Math.max(scoreD, scoreU), scoreL);
+				}
+			}
+		}
+		else if (type == 'l') {
+			for (int i = 1; i <= seq1.length(); i++) {
+				for (int j = 1; j <= seq2.length(); j++) {
+					double scoreD = A[i - 1][j - 1] + scoSys.score(seq1, i, seq2, j);
+					double scoreL = A[i][j - 1] + gap;
+					double scoreU = A[i - 1][j] + gap;
+					A[i][j] = Math.max(Math.max(Math.max(scoreD, scoreU), scoreL), 0);
+				}
+			}
+		}
+		return A[seq1.length() + 1][seq2.length() + 1];
+	}
+
+	public String[] traceback() {
+		String[] align = new String[2];
+		if (type == 'g'){
+			int i = seq1.length();
+			int j = seq2.length();
+			while (i > 0 && j > 0) {
+				if (A[i][j] == A[i - 1][j - 1] + scoSys.score(seq1, i, seq2, j)) {
+					align[1] = align[1] + seq1.at(--i);
+					align[2] = align[2] + seq2.at(--i);
+				} else if (A[i][j] == A[i][j - 1] + gap) {
+					align[1] = align[1] + "-";
+					align[2] = align[2] + seq2.at(--i);
+				} else {
+					align[1] = align[1] + seq1.at(--i);
+					align[2] = align[2] + "-";
+				}
+			}
+			
+			while (i > 0) {
+				align[1] = align[1] + seq1.at(--i);
+				align[2] = align[2] + "-";
+			}
+			while (j > 0) {
+				align[1] = align[1] + "-";
+				align[2] = align[2] + seq2.at(--i);
+			}
+			
+			align[1] = new StringBuffer(align[1]).reverse().toString();
+			align[2] = new StringBuffer(align[2]).reverse().toString();
+		}
+		
+		return align;
+	}
+
+}

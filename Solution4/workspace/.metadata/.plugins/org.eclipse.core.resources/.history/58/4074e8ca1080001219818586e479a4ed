@@ -1,0 +1,13 @@
+
+public class ScoreSystem {
+	double[][] weights;
+	String rowindex, colindex;
+		
+	public ScoreSystem(double[][] s, String[] indices){
+		weights = s;
+		rowindex = indices[0];
+		colindex = indices[1];
+	}
+	
+	
+}

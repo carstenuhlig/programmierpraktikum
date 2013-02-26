@@ -1,0 +1,6 @@
+
+public class Score {
+	int[] weights;
+	
+	
+}
