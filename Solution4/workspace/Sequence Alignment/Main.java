@@ -1,3 +1,6 @@
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -39,23 +42,54 @@ public class Main {
 			}
 		}
 
+		AlignmentAlgorithm alg;
+		double[] g;
 		if (nw) {
-			AlignmentAlgorithm alg = new NWSW();
-			double[] g = { -4 };
-			Sequence[] seqs = Utilities.getSequences("/home/sch/schmidtju/domains.seqlib");
-			alg.init(seqs[0], seqs[1], 'l', g,
-					new ScoreSystem(Utilities.readMatrix(m), Utilities.getIndices(m)));
-			alg.initMatrix();
-			alg.calc();
-			String[] result = alg.traceback();		
-			System.out.println(result[0]);
-			System.out.println(result[1]);
-			}
-		
-		String[][] pair = Utilities.getPairs("/home/sch/schmidtju/sanity.pairs");
-		for(int i = 0; i < pair.length; i++){
-			System.out.println(pair[i][0] + "\t" + pair[i][1]);
+			alg = new NWSW();
+			double[] temp = { -4 };
+			g = temp;
+		} else {
+			alg = new Gotoh();
+			double[] temp = { go, ge };
+			g = temp;
 		}
-//		Utilities.printSequences(Utilities.getSequences("/home/sch/schmidtju/domains.seqlib"));
+		String[][] pair = Utilities
+				.getPairs("/home/sch/schmidtju/sanity.pairs");
+		Sequence[] seqs = Utilities
+				.getSequences("/home/sch/schmidtju/domains.seqlib");
+		Sequence s1 = null;
+		Sequence s2 = null;
+		for (int i = 0; i < pair.length; i++) { // pair.length
+			boolean f1 = false, f2 = false;
+			for (int j = 0; j < seqs.length; j++) {
+				if (pair[i][0].equals(seqs[j].getId())) {
+					s1 = seqs[j];
+					f1 = true;
+				} else if (pair[i][1].equals(seqs[j].getId())) {
+					s2 = seqs[j];
+					f2 = true;
+				}
+				if (f1 && f2)
+					break;
+			}
+			// s1 = new Sequence("id1", "GAAAG");
+			// s2 = new Sequence("id2", "GG");
+			alg.init(s1, s2, 'f', g, new ScoreSystem(Utilities.readMatrix(m),
+					Utilities.getIndices(m)));
+			alg.initMatrix();
+			DecimalFormatSymbols dfs = DecimalFormatSymbols.getInstance();
+			dfs.setDecimalSeparator('.');
+			DecimalFormat df = new DecimalFormat("0.000", dfs);
+			System.out.println(">" + s1.getId() + " " + s2.getId() + " "
+					+ df.format(alg.calc()));
+			String[] result = alg.traceback();
+			System.out.println(s1.getId() + ": " + result[0]);
+			System.out.println(s2.getId() + ": " + result[1]);
+//			System.out.println(alg.checkScore(result));
+			// Utilities.printMatrix(alg.getMatrix('A'), s1, s2);
+			// Utilities.printMatrix(alg.getMatrix('A'), s1, s2);
+			// Utilities.printMatrix(alg.getMatrix('A'), s1, s2);
+		}
+
 	}
 }

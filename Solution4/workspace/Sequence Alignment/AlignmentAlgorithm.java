@@ -5,6 +5,7 @@ public abstract class AlignmentAlgorithm {
 	public abstract void initMatrix();
 	public abstract double calc();
 	public abstract String[] traceback();
-	public abstract double[][] getA();
+	public abstract double[][] getMatrix(char name);
+	public abstract double checkScore(String[] align);
 	
 }

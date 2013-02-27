@@ -1,4 +1,5 @@
 import java.io.*;
+import java.text.DecimalFormat;
 
 public class Utilities {
 	public static double[][] readMatrix(String path) {
@@ -144,7 +145,7 @@ public class Utilities {
 			else
 				System.out.print("\t");
 			for (int j = 0; j < matrix[0].length; j++) {
-				System.out.print(matrix[i1][j] + "\t");
+				System.out.print(new DecimalFormat("0.00").format(matrix[i1][j]) + "\t");
 			}
 			System.out.println();
 		}
@@ -155,4 +156,5 @@ public class Utilities {
 			System.out.println(seqs[i].getSequence());
 		}
 	}
+	
 }
