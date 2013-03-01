@@ -1,0 +1,10 @@
+
+public class Sequence {
+	char[] sequence;
+	
+	public Sequence(String s){
+		sequence = s.toCharArray();
+	}
+	
+	
+}

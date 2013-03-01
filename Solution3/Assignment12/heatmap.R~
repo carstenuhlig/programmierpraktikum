@@ -1,0 +1,5 @@
+dist <- read.csv("distances.txt", sep = "\t")
+matrix <- data.matrix(dist)
+png("heatmap.png")
+heatmap(matrix, Rowv = NA, Colv = NA)
+dev.off()

@@ -1,0 +1,19 @@
+
+public class Sequence {
+	String id;
+	char[] sequence;
+	
+	public Sequence(String s){
+		sequence = s.toCharArray();
+	}
+	
+	public char at(int pos){
+		return sequence[pos - 1];
+	}
+	
+	public int length(){
+		return sequence.length;
+	}
+	
+	
+}
